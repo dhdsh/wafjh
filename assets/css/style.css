@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: red;
+}
+
+h3 {
+  background-color: green;
+  font-size: 48px;
+  text-align: center;
+}
