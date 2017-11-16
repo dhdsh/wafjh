@@ -1,0 +1,330 @@
+//图片轮播
+$(function() {
+    var timer = 0;
+    var index = 0;
+    var len = $('.carousel-image li').length;
+
+    function run() {
+        timer = setInterval(function() {
+            $('.carousel-image li:eq(' + index + ')').stop().fadeOut(1000);
+            $('.carousel-index li:eq(' + index + ')').stop().removeClass('active');
+            index++;
+            if (index > len - 1) {
+                index = 0;
+            }
+            $('.carousel .carousel-image li:eq(' + index + ')').stop().fadeIn(1000);
+            $('.carousel .carousel-index li:eq(' + index + ')').stop().addClass('active');
+
+        }, 3000)
+    }
+    run();
+    $('.carousel').mouseenter(function() {
+        clearInterval(timer)
+    }).mouseleave(function() {
+        run();
+    })
+    $('.carousel-index li').mouseover(function() {
+        $('.carousel-image li:eq(' + index + ')').stop().fadeOut(1000);
+        $('.carousel-index li:eq(' + index + ')').stop().removeClass('active');
+        index = $(this).index();
+        $('.carousel .carousel-image li:eq(' + index + ')').stop().fadeIn(1000);
+        $('.carousel .carousel-index li:eq(' + index + ')').stop().addClass('active');
+    })
+    $('.carousel-right').click(function() {
+        $('.carousel-image li:eq(' + index + ')').stop().fadeOut(1000);
+        $('.carousel-index li:eq(' + index + ')').stop().removeClass('active');
+        index++;
+        if (index > len - 1) {
+            index = 0;
+        }
+        $('.carousel .carousel-image li:eq(' + index + ')').stop().fadeIn(1000);
+        $('.carousel .carousel-index li:eq(' + index + ')').stop().addClass('active');
+    })
+
+    $('.carousel-left').click(function() {
+        $('.carousel-image li:eq(' + index + ')').stop().fadeOut(1000);
+        $('.carousel-index li:eq(' + index + ')').stop().removeClass('active');
+        index--;
+        if (index < 0) {
+            index = len - 1;
+        }
+        $('.carousel .carousel-image li:eq(' + index + ')').stop().fadeIn(1000);
+        $('.carousel .carousel-index li:eq(' + index + ')').stop().addClass('active');
+    })
+
+
+    var count = 0;
+    var stimer = 0;
+
+    function srun() {
+
+        stimer = setInterval(function() {
+            // $('.star-shop').animate({ marginLeft: -1226 * count }, 2000);
+
+
+            count++;
+            if (count > 1) {
+                count = 0;
+            }
+            $('.star-shop').animate({ marginLeft: -1226 * count }, 2000);
+        }, 4000)
+    }
+    srun();
+    // count=0,第一行代码执行没有效果，count++=>count=1,第二行代码让移动到最左边
+
+    // count=1,第一行代码执行没有效果，count++=>count=2=>count=1,底二行代码让移动到最右边
+    $('.star-left,.star-right').mouseover(function() {
+        clearInterval(stimer);
+
+    }).mouseout(function() {
+        srun();
+    })
+    $('.star-left').click(function() {
+        $('.star-shop').animate({ marginLeft: -1226 }, 500);
+    })
+
+    $('.star-right').click(function() {
+        $('.star-shop').animate({ marginLeft: 0 }, 500);
+
+    })
+    $('.cart').mouseenter(function() {
+        console.log(11);
+        // 每次移入的时候，清除以前的动画效果,动画效果执行之后会显示某一部分，通过hide()将多余的部分隐藏
+        $('.cart').children('.cart-content').stop().hide();
+        // 让对应的子级.item下拉
+        $(this).children('.cart-content').slideDown(500);
+    }).mouseleave(function() {
+        $('.cart').children('.cart-content').slideUp(500);
+        // $('.cart').children('.cart-content').stop().slideUp(100);
+    })
+    $('.index>li').click(function() {
+        $('.index li:eq(' + index + ')').removeClass('active');
+
+        index = $(this).index();
+        $('.content').animate({ left: -296 * index }, 600)
+        $('.index>li:eq(' + index + ')').addClass('active');
+    })
+
+
+
+    $('.index1>li').click(function() {
+        $('.index1 li:eq(' + index + ')').removeClass('active');
+
+        index = $(this).index();
+        $('.content1').animate({ left: -296 * index }, 600)
+        $('.index1>li:eq(' + index + ')').addClass('active');
+    })
+
+
+    $('.index2>li').click(function() {
+        $('.index2 li:eq(' + index + ')').removeClass('active');
+
+        index = $(this).index();
+        $('.content2').animate({ left: -296 * index }, 600)
+        $('.index2>li:eq(' + index + ')').addClass('active');
+    })
+    var index = 0;
+    $('.index3>li').click(function() {
+        $('.index3 li:eq(' + index + ')').removeClass('active');
+
+        index = $(this).index();
+        $('.content3').animate({ left: -296 * index }, 600)
+        $('.index3>li:eq(' + index + ')').addClass('active');
+    })
+    $('.klw').mouseover(function() {
+
+        $(this).children('div').css('display', 'block');
+    }).mouseout(function() {
+
+        $(this).children('div').css('display', 'none');
+    })
+
+    var xml = 0;
+    $('.klw:eq(0) .klw-right').click(function() {
+        $('.index>li:eq(' + xml + ')').removeClass('active');
+        xml++;
+        if (xml > 2) {
+            xml = 2;
+        }
+
+        $('.index>li:eq(' + xml + ')').addClass('active');
+        $('.klw:eq(0)').children('.content').animate({ left: -296 * xml }, 600);
+    })
+
+    $('.klw:eq(0) .klw-left').click(function() {
+        $('.index li:eq(' + xml + ')').removeClass('active');
+        xml--;
+        if (xml < 0) {
+            xml = 0;
+        }
+
+        $('.index li:eq(' + xml + ')').addClass('active');
+        $('.klw:eq(0)').children('.content').animate({ left: -296 * xml }, 600);
+    })
+
+
+    $('.klw:eq(1) .klw-right').click(function() {
+        $('.index1 li:eq(' + xml + ')').removeClass('active');
+        xml++;
+        if (xml > 3) {
+            xml = 3;
+        }
+
+        $('.index1 li:eq(' + xml + ')').addClass('active');
+        $('.klw:eq(1)').children('.content1').animate({ left: -296 * xml }, 600);
+    })
+
+    $('.klw:eq(1) .klw-left').click(function() {
+        $('.index1 li:eq(' + xml + ')').removeClass('active');
+        xml--;
+        if (xml < 0) {
+            xml = 0;
+        }
+
+        $('.index1 li:eq(' + xml + ')').addClass('active');
+        $('.klw:eq(1)').children('.content1').animate({ left: -296 * xml }, 600);
+    })
+
+
+    $('.klw:eq(2) .klw-right').click(function() {
+        $('.index2 li:eq(' + xml + ')').removeClass('active');
+        xml++;
+        if (xml > 2) {
+            xml = 2;
+        }
+
+        $('.index2 li:eq(' + xml + ')').addClass('active');
+        $('.klw:eq(2)').children('.content2').animate({ left: -296 * xml }, 600);
+    })
+
+    $('.klw:eq(2) .klw-left').click(function() {
+        $('.index2 li:eq(' + xml + ')').removeClass('active');
+        xml--;
+        if (xml < 0) {
+            xml = 0;
+        }
+
+        $('.index2 li:eq(' + xml + ')').addClass('active');
+        $('.klw:eq(2)').children('.content2').animate({ left: -296 * xml }, 600);
+    })
+
+
+
+    $('.klw:eq(3) .klw-right').click(function() {
+        $('.index3 li:eq(' + xml + ')').removeClass('active');
+        xml++;
+        if (xml > 3) {
+            xml = 3;
+        }
+
+        $('.index3 li:eq(' + xml + ')').addClass('active');
+        $('.klw:eq(3)').children('.content3').animate({ left: -296 * xml }, 600);
+    })
+
+    $('.klw:eq(3) .klw-left').click(function() {
+        $('.index3 li:eq(' + xml + ')').removeClass('active');
+        xml--;
+        if (xml < 0) {
+            xml = 0;
+        }
+
+        $('.index3 li:eq(' + xml + ')').addClass('active');
+        $('.klw:eq(3)').children('.content3').animate({ left: -296 * xml }, 600);
+    })
+    $('.carousel-menu li').mouseenter(function() {
+        $(this).children('.carousel-btn').css('display', 'block');
+    }).mouseleave(function() {
+        $(this).children('.carousel-btn').css('display', 'none');
+    })
+
+    var ggl = 0;
+    $('.desk-search li').mouseover(function() {
+        $('.desk-search li:eq(' + ggl + ')').removeClass('active')
+        $('.desk-pho:eq(' + ggl + ')').css('display', 'none');
+        ggl = $(this).index();
+        $('.desk-search li:eq(' + ggl + ')').addClass('active')
+        $('.desk-pho:eq(' + ggl + ')').css('display', 'block');
+    })
+
+    $('.desk-pic').mouseenter(function() {
+        $(this).animate({ top: -5 }, 100);
+        $(this).css('box-shadow', '0 0 5px 5px  #ddd');
+    }).mouseout(function() {
+        $(this).animate({ top: 0 }, 100);
+        $(this).css('box-shadow', '');
+    })
+    $('.desk-pho li').mouseenter(function() {
+        $(this).animate({ top: -5 }, 100);
+        $(this).css('box-shadow', '0 0 5px 5px   #ddd');
+        $(this).children('.desk-loa').animate({ top: 225 }, 100);
+
+    }).mouseleave(function() {
+        $(this).children('.desk-loa').animate({ top: 305 }, 100);
+        $(this).animate({ top: 0 }, 100);
+        $(this).css('box-shadow', '');
+    })
+
+    $('.nav-menu').mouseenter(function() {
+        $('.yinlu').stop(true).slideDown()
+    }).mouseleave(function() {
+        $('.yinlu').slideUp()
+    })
+
+    $('.yinlu').mouseenter(function() {
+        $(this).stop();
+    }).mouseleave(function() {
+        $(this).slideUp();
+    })
+    var tte;
+
+    $('.nav-menu li').mouseenter(function() {
+        $('.yinlu .item:eq(' + tte + ')').removeClass('active');
+        tte = $(this).index();
+        $('.yinlu .item:eq(' + tte + ')').addClass('active');
+    })
+    $('.elect-one li').mouseenter(function() {
+        $(this).animate({ top: -5 }, 300);
+        $(this).css('box-shadow', '0 0 5px 5px   #ddd');
+
+    }).mouseleave(function() {
+
+        $(this).animate({ top: 0 }, 100);
+        $(this).css('box-shadow', '');
+
+    })
+    $('.vodio li').mouseenter(function() {
+        $(this).animate({ top: -5 }, 100);
+        $(this).css('box-shadow', '0 0 5px 5px   #ddd');
+        $(this).children('span').css('background-color', '#ff6700');
+    }).mouseleave(function() {
+        $(this).animate({ top: 0 }, 100);
+        $(this).css('box-shadow', '');
+        $(this).children('span').css('background-color', '');
+    })
+})
+
+window.onload = function() { //Ajax部分导航显示下拉框部分；
+    var searchText = document.querySelector('.search-text');
+    var nAV = document.querySelector('.nav-mi');
+    var search = document.querySelector('.search-man')
+    searchText.onfocus = function() {
+        nAV.innerHTML = '';
+        this.style.border = '1px solid red';
+        nAV.style.display = 'block';
+        search.style.borderLeft = '1px solid red';
+
+        get('assets/php/1.php', function(data) {
+            var content = '';
+            data.forEach(function(value, key) {
+                content += '<li><a href=" "><span>' + value.name + '</span><span>' + value.number + '</span></a></li>'
+            })
+            document.querySelector('.nav-mi').innerHTML += content;
+        }, 'json')
+    }
+    searchText.onblur = function() {
+        nAV.style.display = 'none';
+        this.style.border = '';
+        search.style.borderLeft = '';
+    }
+
+}
