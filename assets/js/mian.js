@@ -275,8 +275,7 @@ $(function() {
     }).mouseleave(function() {
         $(this).slideUp();
     })
-    var tte;
-
+    var tte=0;
     $('.nav-menu li').mouseenter(function() {
         $('.yinlu .item:eq(' + tte + ')').removeClass('active');
         tte = $(this).index();
@@ -301,6 +300,79 @@ $(function() {
         $(this).css('box-shadow', '');
         $(this).children('span').css('background-color', '');
     })
+   var ss;
+        $('.input').focus(function() {
+            $(this).siblings('.model').show();
+            $('input').val('');
+        }).blur(function() {
+            $('input').val(ss);
+            var that = $(this);
+            setTimeout(function() {
+                that.siblings('.model').hide();
+            }, 300)
+            // ;
+        })
+        $('li').click(function() {
+            ss = $(this).text();
+            console.log(ss);
+            $('.input').val(ss);
+            $(this).parent('.model').hide();
+        })
+        $('.exit').click(function() {
+            $('.trans').hide();
+             $('body').css('overflow-y','');
+        })
+        $('.hjt').click(function() {
+            $('.trans').css('display', 'block');
+            $('body').css('overflow-y','hidden');
+        })
+        var nmd=0;
+        $('.login>span').click(function(){        
+             $('.login>span:eq('+nmd+')').removeClass('active');
+             $('.labelbox:eq('+nmd+')').css('display','none');
+             nmd=$(this).index();
+             $('.login>span:eq('+nmd+')').addClass('active');
+             $('.labelbox:eq('+nmd+')').css('display','block');
+        })
+        $('.wsz').click(function(){
+             $('.sccen').hide();
+             $('body').css('overflow-y','');
+        })
+        $('.dll').click(function(){
+             $('.sccen').show();
+             $('body').css('overflow-y','hidden');
+        })
+       $('.fff').click(function(){
+            var value1=$.trim($('.ace').val());
+            var value2=$.trim($('.rrr').val())
+            var reg1= /^(13[0-9]|14[579]|15[012356789]|17[135678]|18[0-9]|199)[0-9]{8}$/;
+            var reg2=/^[0-9a-zA-Z_\.]{1,}@[a-zA-Z0-9]+\.[a-z]{2,5}(\.cn)?$/;
+            var reg3= /^[a-zA-Z0-9]{6,14}$/;
+            if(reg1.test(value1)||reg2.test(value1)){
+                $('.pMsg').text('用户名正确');
+                $('.pMsg').addClass('active');
+                $('.pMsg').removeClass('error');
+            }else{
+                $('.pMsg').text('用户名不正确,请重新输入');
+                $('.pMsg').removeClass('active');
+                $('.pMsg').addClass('error');
+            }
+            if(value1==''){
+                $('.pMsg').text('');
+            }
+            if(reg3.test(value2)){
+               $('.eMsg').text('密码正确');  
+               $('.eMsg').addClass('active');
+               $('.eMsg').removeClass('error');
+            }else{              
+               $('.eMsg').text('密码不正确,请重新输入');
+               $('.eMsg').removeClass('active');
+               $('.eMsg').addClass('error');  
+            }
+            if(value2==''){
+                $('.eMsg').text('');
+            }
+       }) 
 })
 
 window.onload = function() { //Ajax部分导航显示下拉框部分；
@@ -313,7 +385,7 @@ window.onload = function() { //Ajax部分导航显示下拉框部分；
         nAV.style.display = 'block';
         search.style.borderLeft = '1px solid red';
 
-        get('assets/php/1.php', function(data) {
+        get('http://localhost/p-04/wafjh/php/1.php', function(data) {
             var content = '';
             data.forEach(function(value, key) {
                 content += '<li><a href=" "><span>' + value.name + '</span><span>' + value.number + '</span></a></li>'
@@ -326,5 +398,29 @@ window.onload = function() { //Ajax部分导航显示下拉框部分；
         this.style.border = '';
         search.style.borderLeft = '';
     }
+
+        var username = document.getElementById('ber');
+        var uMsg = document.getElementById('reeg');
+        var icon = document.querySelector('.mimi')
+        username.onfocus = function() {
+
+        }
+        username.onblur = function() {
+            var value = this.value.trim();
+            var reg = /^(13[0-9]|14[579]|15[012356789]|17[135678]|18[0-9]|199)[0-9]{8}$/;
+            var reg1 = /[\D]{1,11}/
+            if (reg.test(value)) {
+                uMsg.innerHTML = "恭喜您，手机号码可用";
+                uMsg.className = 'success';
+                // icon.style.display='block';
+            } else if (username.innerHTML == "") {
+                uMsg.innerHTML = "请输入手机号码";
+                uMsg.className = 'active';
+            }
+            if (reg1.test(value)) {
+                uMsg.innerHTML = "格式不正确";
+                uMsg.className = 'active';
+            }
+        }  
 
 }

@@ -18,7 +18,6 @@
         image {
             margin: 0;
             padding: 0;
-
         }
 
         ul,
@@ -56,32 +55,36 @@
             height: 40px;
             background-color: #333;
             line-height: 40px;
-            a {
-              color: #b0b0a4;
-              &:hover{
-              	 color: #fff;
-              }
-           }
-           .container {
+        }
+
+        .topbar a {
+            color: #b0b0a4;
+        }
+
+        .topbar a:hover {
+            color: #fff;
+        }
+
+        .topbar .container {
             width: 1226px;
             margin: 0 auto;
-               .topbar-nav {
-              font-size: 12px;
-              color: #fff;
-              float: left;
-            a {
-             margin-left: 5px;
-             &::after{
-             	 content: "|";
-                 margin-left: 8px;
-                 color: #555;               
-             }
-           }
-         }
-      }
-    }
-          
-       
+        }
+
+        .topbar .container .topbar-nav {
+            font-size: 12px;
+            color: #fff;
+            float: left;
+        }
+
+        .topbar .container .topbar-nav a {
+            margin-left: 5px;
+        }
+
+        .topbar .topbar-nav a::after {
+            content: "|";
+            margin-left: 8px;
+            color: #555;
+        }
 
         .topbar .top-login a:first-child::after {
             content: "|";
@@ -240,6 +243,11 @@
             right: 52px;
             border: 1px solid #e0e0e0;
         }
+
+
+
+
+
         .nav .nav-search .search-man {
 
             position: absolute;
@@ -259,7 +267,6 @@
             left: -103px;
             top: -3px;
             font-size: 12px;
-            z-index:999;
             transition: all .5s;
         }
 
@@ -305,6 +312,210 @@
             float: right;
             color: #ddd;
             margin-right: 26px;
+        }
+
+        .trans {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .trans .login {
+            position: relative;
+            margin: 150px auto;
+            z-index: 1;
+            width: 800px;
+            height: 600px;
+            background-color: #fff;
+        }
+
+        .trans .login img {
+            margin-left: 380px;
+        }
+
+        .trans .login .exit {
+            float: right;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            background: #ff6700;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .trans .login .exit:hover {
+            color: #fff;
+        }
+
+        .trans .login .once {
+            margin: 0 auto;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            width: 300px;
+            height: 40px;
+            background: #ff6700;
+        }
+
+        .trans .login .once a {
+            display: inline-block;
+            width: 300px;
+            height: 100%;
+            color: #fff;
+        }
+
+        .trans .login .legend {
+            margin: 20px auto;
+            width: 300px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        .trans .login .watah {
+            font-size: 0;
+            position: absolute;
+            left: 280px;
+            bottom: 20px;
+        }
+
+        .trans .login .watah a {
+            font-size: 14px;
+        }
+
+        .trans .login .watah a:last-child::after {
+            content: "";
+        }
+
+        .trans .login .watah a::after {
+            content: "|";
+            margin: 0 8px;
+        }
+
+        .trans .login .area {
+            position: absolute;
+            top: 160px;
+            left: 252px;
+            font-size: 12px;
+        }
+
+        .trans .login .shou {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .trans .login .shou span {
+            margin-left: 252px;
+        }
+
+        .trans .login .shou .mobile {
+            margin-left: 251px;
+        }
+
+        .trans .login .shou .mobile #ber {
+            outline: none;
+            width: 240px;
+            height: 42px;
+        }
+
+        .trans .login .shou .mobile #reeg {
+            display: block;
+            margin-left: 50px;
+            width: 240px;
+            height: 20px;
+        }
+
+        .trans .login .shou .mobile #reeg.active {
+            border: 1px solid #ff6700;
+            color: #ff6700;
+        }
+
+        .trans .login .shou .mobile #reeg.success {
+            color: green;
+        }
+
+        .trans .login .shou .mobile #reeg .iconfont {
+            position: absolute;
+            z-index: 1;
+            display: none;
+            float: right;
+            color: #ff6700;
+        }
+
+        .trans .login .shou .mobile .font {
+            float: left;
+            width: 45px;
+            height: 45px;
+            border: 1px solid red;
+        }
+
+        .trans .login .login-mi {
+            font-size: 30px;
+            margin-left: 320px;
+            margin-top: 30px;
+        }
+
+        .trans .login .country {
+            margin-top: 50px;
+        }
+
+        .trans .login .country input {
+            outline: none;
+            margin-left: 250px;
+            width: 236px;
+            height: 42px;
+        }
+
+        .trans .login .country .ce {
+            text-align: center;
+            margin-left: 300px;
+            font-size: 12px;
+        }
+
+        .trans .login .country .quan {
+            float: right;
+            cursor: pointer;
+            margin-right: 262px;
+            border: 1px solid red;
+            width: 46px;
+            height: 46px;
+        }
+
+        .trans .login .country .quan .gou {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            border: 1px solid red;
+            margin: 13px auto;
+            line-height: 20px;
+            border-radius: 50%;
+        }
+
+        .trans .login .country .model {
+            display: none;
+            position: absolute;
+            margin-top: -21px;
+            z-index: 2;
+            background-color: #fff;
+            margin-left: 257px;
+            height: 100px;
+            width: 280px;
+            overflow: scroll;
+        }
+
+        .trans .login .country .model li {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            text-align: left;
+        }
+
+        .trans .login .country .model li:hover {
+            background: #666;
         }
 
         .yinlu {
@@ -702,7 +913,7 @@
 
         .desk .desk-search {
             position: absolute;
-            z-index=1;
+            z-index:1;
             right: 10px;
             top: -13px;
         }
@@ -2077,4 +2288,136 @@
 
         .zx-4 li a {
             margin-left: -100px;
+        }
+
+        .sccen {
+            position: absolute;
+            /*display:none;*/
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+        }
+
+        .sccen .please {
+            width: 100%;
+            height: 120px;
+            background: #fff;
+        }
+
+        .sccen .please img {
+            float: left;
+            margin-top: 30px;
+        }
+
+        .sccen .please .city {
+            float: left;
+            margin-top: 25px;
+            margin-left: 22px;
+        }
+
+        .sccen .please span {
+            z-index: 1;
+            display: block;
+        }
+
+        .sccen .please span:first-child {
+            font-size: 30px;
+        }
+
+        .sccen .please span:last-child {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .sccen .url {
+            background-image: url(../images/700.jpg);
+            background-position: center center;
+            position: absolute;
+            width: 100%;
+            height: 588px;
+        }
+
+        .sccen .gu {
+                    position: absolute;
+                    top: 4px;
+                    /* left: 212px; */
+                    right: 100px;
+        }
+
+        .sccen .gu .zc:first-of-type {
+            position: absolute;
+            width: 410px;
+            height: 524px;
+            background: #fff;
+            top: 146px;
+            right: 0;
+        }
+
+        .sccen .zc .login {
+            font-size: 20px;
+            font-weight: 700;
+            width: 100%;
+            height: 82px;
+            line-height: 82px;
+            text-align: center;
+        }
+        .sccen .zc .wsz{
+             position:absolute;
+             right:0;
+             width:30px;
+             height:30px;
+             color:#fff;
+             background: #ff6700;
+             line-height:30px;
+             text-align:center;
+             border-radius: 50%;
+             cursor:pointer;
+        }
+
+        .sccen .zc .login .active {
+            color: #ff6700;
+        }
+
+        .sccen .zc .login span:first-child::after {
+            content: "|";
+            color: #ddd;
+            margin: 0 48px;
+        }
+
+        .sccen .zc .labelbox {
+            text-align: center;
+            width: 100%;
+        }
+        .sccen .zc .labelbox .active {
+            color:green;
+        }
+        .sccen .zc .labelbox .error {
+            color:red;
+        }
+
+        .sccen .zc .labelbox:nth-of-type(2){
+            position:absolute;
+        }
+
+        .sccen .zc .labelbox input {
+            outline: none;
+            width: 346px;
+            height: 48px;
+            margin-top: 30px;
+        }
+
+        .sccen .zc .labelbox span:first-of-type a {
+            font-size: 14px;
+            color: #ff6700;
+            padding: 0 32px;
+            float: left;
+        }
+
+        .sccen .zc .labelbox span:last-of-type {
+            font-size: 14px;
+            float: right;
+            color: #333;
+            padding: 0 32px;
         }

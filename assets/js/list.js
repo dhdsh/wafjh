@@ -101,7 +101,7 @@ window.onscroll = function() {
     if (h < 534) {
         if (bool) {
             bool = false;
-            get('assets/php/2.php', function(data) {
+            get('http://localhost/p-04/wafjh/list.html/php/2.php', function(data) {
                 var content = '';
                 data.forEach(function(value, key) {
                     content += '<li><a href=""><img src="' + value.img + '"></a>';

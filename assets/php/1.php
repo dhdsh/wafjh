@@ -1,5 +1,5 @@
 <?php 
-
+header("Access-Control-Allow-Origin: *");
 $arr = [
 	["name"=>"小米6","number"=>"约有6件"],
 	["name"=>"红米note4X","number"=>"约有8件"],
